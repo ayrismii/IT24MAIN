@@ -49,6 +49,15 @@
         .card:nth-child(even) {
             background-color: #74a6f1;
         }
+        .applet-container{
+            margin-top: 1rem;
+            margin-left: 2rem;
+            width: 90%;
+        }
+
+        #map {
+            height: 600px;
+        }
 
     </style>
 </head>
@@ -80,7 +89,7 @@
                               Dropdown link
                             </a>
                             <ul class="dropdown-menu">
-                              <li><a class="dropdown-item" href="applet-2.html">Action</a></li>
+                              <li><a class="dropdown-item" href="apple-2.html">Action</a></li>
                               <li><a class="dropdown-item" href="applet-3.html">Another action</a></li>
                               <li><a class="dropdown-item" href="#">Something else here</a></li>
                             </ul>
@@ -89,33 +98,54 @@
                       </div>
                     </div>
                   </nav> 
-                  <div class="container mt-4"></div>
-                  <h1> APPLET GALLERY</h1>
-                  <div class="input-group custom-margin">
-                    <span class="input-group-text" id="inputGroup-sizing-default">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search"
-                            viewBox="0 0 16 16">
-                            <path
-                                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
-                        </svg>
-                    </span>
-                    <input type="text" class="form-control" aria-label="Sizing example input"
-                        aria-describedby="inputGroup-sizing-default" />
-                    <span class="input-group-text" id="inputGroup-sizing-default">Search</span>
+                  <div class="applet-container">
+                    <h3>Leaflet Map Basics</h3>
+                    <div id="map"></div>
+                  
                 </div>
-                <div class="flex-container">
-                    <div class="card">Card 1</div>
-                    <div class="card">Card 2</div>
-                    <div class="card">Card 3</div>
-                    <div class="card">Card 4</div>
-                    <div class="card">Card 5</div>
-                    <div class="card">Card 6</div>
-                    <div class="card">Card 7</div>
-                    <div class="card">Card 8</div>
-                    <div class="card">Card 9</div>
-                </div>
-            </div>
-                
+                <script>
+                    class LeafletMap {
+                    
+                        constructor(containerId, center, zoom) {
+                            this.map = L.map(containerId).setView(center, zoom);
+                            this.initTileLayer();
+                        }
+                        initTileLayer() {
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(this.map);
+    }
+    addMarker(lat, lng, message) {
+        const marker = L.marker([lat, lng]).addTo(this.map);
+        marker.bindPopup(message);
+    }
+
+    loadMarkersFromJson(url) {
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                data.forEach(marker => {
+                    this.addMarker(marker.latitude, marker.longitude, marker.message);
+                });
+            })
+            .catch(error => console.error('Error loading markers:', error));
+    }
+}
+
+const myMap = new LeafletMap('map', [8.360004, 124.868419], 18);
+
+
+myMap.addMarker(8.359735, 124.869206, 'CCS Faculty Office');
+myMap.addMarker(8.359639,124.869179, 'CCS Laboratory 1');
+myMap.addMarker(8.359554,124.869153, 'CCS Laboratory 2');
+
+
+myMap.loadMarkersFromJson('applet-2.json');
+
+</script>
+                    
+                       
                 
 </body>
 </html>
