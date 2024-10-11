@@ -49,7 +49,6 @@
         .card:nth-child(even) {
             background-color: #74a6f1;
         }
-
     </style>
 </head>
 <body>
@@ -99,11 +98,11 @@
                                 d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
                         </svg>
                     </span>
-                    <input type="text" class="form-control" aria-label="Sizing example input"
+                    <input type="text" class="form-control" id="searchInput" placeholder="Search cards..." aria-label="Sizing example input"
                         aria-describedby="inputGroup-sizing-default" />
                     <span class="input-group-text" id="inputGroup-sizing-default">Search</span>
                 </div>
-                <div class="flex-container">
+                <div class="flex-container" id="cardContainer">
                     <div class="card">Card 1</div>
                     <div class="card">Card 2</div>
                     <div class="card">Card 3</div>
@@ -115,7 +114,23 @@
                     <div class="card">Card 9</div>
                 </div>
             </div>
-                
-                
+
+    <script>
+        const searchInput = document.getElementById('searchInput');
+        const cardContainer = document.getElementById('cardContainer');
+        const cards = Array.from(cardContainer.getElementsByClassName('card'));
+
+        searchInput.addEventListener('input', function() {
+            const searchTerm = searchInput.value.toLowerCase();
+            cards.forEach(card => {
+                const cardText = card.textContent.toLowerCase();
+                if (cardText.includes(searchTerm)) {
+                    card.style.display = '';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    </script>
 </body>
 </html>
