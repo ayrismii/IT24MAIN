@@ -49,7 +49,6 @@
         .card:nth-child(even) {
             background-color: #74a6f1;
         }
-
     </style>
 </head>
 <body>
@@ -90,15 +89,41 @@
                       </div>
                     </div>
                   </nav> 
-                  <div class="input-group input-group-lg input-search">
-                    <span class="input-group-text">Search</span>
-                    <input type="text" class="form-control" id="studentSearchBar" >
-                  </div>
-                  <div id="studentList"  style="margin-left: 3.5rem;"></div>
-                  <div id="studentSearchList" style="margin-left: 3.5rem;"></div>
-                
-                  
-                
-                <script src="applet-4.js"></script>    
-</body>
+                  <div class="container mt-4"></div>
+                  <h1> APPLET GALLERY</h1>
+                  <div class="input-group custom-margin">
+                    <span class="input-group-text" id="inputGroup-sizing-default">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search"
+                            viewBox="0 0 16 16">
+                            <path
+                                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                        </svg>
+                    </span>
+                    <input type="text" class="form-control" id="searchInput" placeholder="Search cards..." aria-label="Sizing example input"
+                        aria-describedby="inputGroup-sizing-default" />
+                    <span class="input-group-text" id="inputGroup-sizing-default">Search</span>
+                </div>
+            </body>
+            <div class="contain">
+                <h3>API key </h3>
+                <input type="text" id="apiInput" placeholder="Enter API key" />
+              </div>
+                <div class="container">
+                    <h2>Weather</h2>
+                    <input type="text" id="cityInput" placeholder="Enter city name" />
+                    <button id="getWeatherBtn" class="btn btn-primary" style="margin-top: -0.35rem;">Get Weather</button>
+                    <button id="getLocationBtn" class="btn btn-secondary"style="margin-top: -0.35rem;">Use My Location</button>
+            
+                    <div id="weatherCard" class="weather-card" style="display: none;">
+                        <br>
+                        <h2 id="cityName"></h2>
+                        <p id="temperature"></p>
+                        <p id="description"></p>
+                        <p id="humidity"></p>
+                        <p id="windSpeed"></p>
+                    </div>
+                </div>
+                <script src="applet-5.js"></script>
+        </body>
+      
 </html>
