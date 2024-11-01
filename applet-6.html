@@ -49,7 +49,6 @@
         .card:nth-child(even) {
             background-color: #74a6f1;
         }
-
     </style>
 </head>
 <body>
@@ -91,15 +90,21 @@
                       </div>
                     </div>
                   </nav> 
-                  <div class="input-group input-group-lg input-search">
-                    <span class="input-group-text">Search</span>
-                    <input type="text" class="form-control" id="studentSearchBar" >
-                  </div>
-                  <div id="studentList"  style="margin-left: 3.5rem;"></div>
-                  <div id="studentSearchList" style="margin-left: 3.5rem;"></div>
-                
-                  
-                
-                <script src="applet-4.js"></script>    
-</body>
+                 
+            </body>
+            <div class="CONTAINER">
+                <div class="container-fluid" style="max-width: 40%;">
+                    <h2 class="text-center">To-Do List</h2>
+                       <div class="input-group mb-4">
+                        <textarea class="form-control" style="border-radius: 10px;" id="todoInput" placeholder="Add a new task"  rows="3"></textarea>
+                           <div class="input-group-append" style="margin-left: .5rem;">
+                              <button class="btn btn-primary" id="addButton">Save</button>
+                           </div>
+                              <ul id="todoList" class="list-group"></ul>
+                    </div>
+                </div>
+            
+                <script src="applet-6.js"></script>
+        </body>
+      
 </html>
